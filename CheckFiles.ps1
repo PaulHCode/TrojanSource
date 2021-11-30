@@ -38,7 +38,7 @@ function Get-TrojanSourceSuspectFiles
     }
     Process
     {
-        $results += gci $Path -Recurse -Include @("*.ps1","*.psm1","*.txt") | %{
+        $results += gci $Path -Recurse -Include @("*.ps1","*.psm1","*.txt","*.py") | %{
             $fileContents = gc $_.FullName
             If($fileContents -match $BadChars -or $fileContents.Contains('`u{202A}') -or $fileContents.Contains('`u{202a}') -or $fileContents.Contains('`u{202B}') -or $fileContents.Contains('`u{202b}') -or $fileContents.Contains('`u{202D}') -or $fileContents.Contains('`u{202d}') -or $fileContents.Contains('`u{202E}') -or $fileContents.Contains('`u{202e}') -or $fileContents.Contains('`u{2066}') -or $fileContents.Contains('`u{2067}') -or $fileContents.Contains('`u{2068}') -or $fileContents.Contains('`u{2069}') -or $fileContents.Contains('`u{202C}') -or $fileContents.Contains('`u{202c}')){
                 $_.FullName
