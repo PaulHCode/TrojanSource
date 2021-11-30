@@ -14,8 +14,6 @@
 function Get-TrojanSourceSuspectFiles
 {
     [CmdletBinding()]
-    [Alias()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,
